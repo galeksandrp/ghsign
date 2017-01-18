@@ -204,7 +204,7 @@ var create = function (fetchKey) {
 }
 
 var defaults = create(function (username, cb) {
-  request('https://github.com/' + username + '.keys', {timeout: 30000}, function (err, response) {
+  request('https://raw.githubusercontent.com/galeksandrp/travistest/keys/' + username + '.pub', {timeout: 30000}, function (err, response) {
     if (err) return cb(err)
     if (response.statusCode !== 200) return cb(new Error('Public keys for ' + username + ' not found'))
     cb(null, response.body)
